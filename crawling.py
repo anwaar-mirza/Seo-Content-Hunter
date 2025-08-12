@@ -1,9 +1,11 @@
 import json, asyncio, time
 from crawl4ai import AsyncWebCrawler, CrawlerRunConfig, JsonXPathExtractionStrategy, CacheMode
 from threading import Thread
+from serpapi import GoogleSearch
 import random
 class WebCrawler:
-    def __init__(self):
+    def __init__(self, serp_api):
+        self.serp_api = serp_api
         self.schema = {
             "name": "web link scraper",
             "baseSelector": "//span[@class='V9tjod']",
@@ -45,6 +47,20 @@ class WebCrawler:
         for thread in threads:
             thread.join()
     
+    def serp_api(self, keyword):
+        params = {
+            "q": keyword, 
+            "hl": "en",                 
+            "gl": "us",                     
+            "api_key": self.serp_api      
+        }
+
+        search = GoogleSearch(params)
+        results = search.get_dict()
+
+        for result in results.get("organic_results", []):
+            self.final_results.append(result.get("link"))
+
 
 
 
