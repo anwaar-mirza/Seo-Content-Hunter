@@ -35,7 +35,7 @@ class WebCrawler:
         asyncio.run(self.scrape_links(url))
     
     def handle_threading(self, keyword):
-        urls = [self.return_base_url(keyword=keyword, index=i) for i in range(0, 201, 10)]
+        urls = [self.return_base_url(keyword=keyword, index=i) for i in range(0, 101, 10)]
         threads = []
         for url in urls:
             thread = Thread(target=self.run_scraper, args=(url,))
