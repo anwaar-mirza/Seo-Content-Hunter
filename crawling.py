@@ -6,7 +6,7 @@ class WebCrawler:
     def __init__(self):
         self.schema = {
             "name": "web link scraper",
-            "baseSelector": "//span[@class='V9tjod']",
+            "baseSelector": "//div[@class='b8lM7']/span",
             "fields": [
                 {"name": "link", "selector": ".//a", "type": "attribute", "attribute": "href"}
             ]
