@@ -6,16 +6,15 @@ class WebCrawler:
     def __init__(self):
         self.schema = {
             "name": "web link scraper",
-            "baseSelector": '//div[@class="b_attribution"]',
+            "baseSelector": "//span[@class='V9tjod']",
             "fields": [
-                {"name": "link", "selector": ".//cite", "type": "text"}
+                {"name": "link", "selector": ".//a", "type": "attribute", "attribute": "href"}
             ]
         }
         self.final_results = []
 
     def return_base_url(self, keyword, index):
-        #return f"https://www.google.com/search?q={keyword}&start={index}"
-        return f"https://www.bing.com/search?q={keyword}&first={index}"
+        return f"https://www.google.com/search?q={keyword}&start={index}"
 
     async def scrape_links(self, url:str):
         async with AsyncWebCrawler() as crawler:
