@@ -1,7 +1,7 @@
 import json, asyncio, time
 from crawl4ai import AsyncWebCrawler, CrawlerRunConfig, JsonXPathExtractionStrategy, CacheMode
 from threading import Thread
-
+import random
 class WebCrawler:
     def __init__(self):
         self.schema = {
@@ -41,7 +41,7 @@ class WebCrawler:
             thread = Thread(target=self.run_scraper, args=(url,))
             threads.append(thread)
             thread.start()
-            time.sleep(1)
+            time.sleep(random.choice([1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]))
         for thread in threads:
             thread.join()
 
