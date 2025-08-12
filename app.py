@@ -33,16 +33,17 @@ st.markdown("---")
 groq_api = st.text_input("🔑 Enter Your GROQ API Key", type="password", placeholder="Paste your API key here...")
 if groq_api:
     st.session_state.bot = AIAgent(GROQ_API_KEY=groq_api, prompt_templete=prompt_templete)
-    st.session_state.crawl = WebCrawler()
+    st.session_state.crawl = WebCrawler(serp_api="929816dd33654e829640437a7c729e5e105885c36683d39fb8912980b3c0bd3e")
     st.session_state.content = GetContentByRequest()
     search_box = st.text_input(
         "💡 Enter a Keyword or Niche",
         placeholder="e.g., digital marketing agencies in New York"
     )
     if search_box:
-        search_box = search_box.lower().replace(" ", "+")
+        # search_box = search_box.lower().replace(" ", "+")
         with st.spinner("🕵️ Crawling the web and gathering contacts... Please wait"):
-            st.session_state.crawl.handle_threading(keyword=search_box)
+            # st.session_state.crawl.handle_threading(keyword=search_box)
+            st.session_state.crawl.serp_api_search(search_box)
             fr = [_result['link'] for _result in st.session_state.crawl.final_results]
             fr = [r for r in fr if "google.com" not in r and "youtube.com" not in r and "linkedin.com" not in r and "facebook.com" not in r and "twitter.com" not in r and "instagram.com" not in r and "tiktok.com" not in r]
             fr = [r.split('?')[0] if "?" in r else r for r in fr]

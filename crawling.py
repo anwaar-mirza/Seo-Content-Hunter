@@ -47,7 +47,7 @@ class WebCrawler:
         for thread in threads:
             thread.join()
     
-    def serp_api(self, keyword):
+    def serp_api_search(self, keyword):
         params = {
             "q": keyword, 
             "hl": "en",                 
