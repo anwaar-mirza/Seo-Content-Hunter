@@ -44,6 +44,9 @@ class WebCrawler:
             time.sleep(random.choice([1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]))
         for thread in threads:
             thread.join()
+    
+
+
 
 
 
