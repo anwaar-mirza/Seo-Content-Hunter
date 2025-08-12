@@ -2,7 +2,6 @@ from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 import json
 
-
 class AIAgent:
     def __init__(self, GROQ_API_KEY, prompt_templete):
         self.groq_api = GROQ_API_KEY
