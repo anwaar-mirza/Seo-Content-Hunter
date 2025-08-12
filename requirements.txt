@@ -1,0 +1,7 @@
+streamlit
+crawl4ai
+beautifulsoup4
+langchain
+langchain-groq
+langchain-core
+pydantic
